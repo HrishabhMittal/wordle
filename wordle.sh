@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo -e "\033[H\033[0JPlay Wordle!"
 list="list.txt"
 if [[ "$1" == "-ny" ]]; then
@@ -36,9 +37,10 @@ while [[ "$iter" -ne "111111" ]]; do
     fi
     if [[ "$guess" == "$word" ]]; then
         echo Congrats! you won!
+        iter=""
         break
     fi
 done
-if [[ "$iter" == "11111" ]]; then
-    echo boo you lost!
+if [[ "$iter" -ne "" ]]; then
+    echo "$iter" boo you lost! the word was "$word"
 fi
